@@ -14,7 +14,16 @@ spring:
     password: password
     url: jdbc:postgresql://localhost:5433/budget-tracker
 
-#  flyway:
-#    user: ${DB_USER}
-#    password: ${DB_PASSWORD}
-#    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: a nice client id
+            client-secret: a nice client secret
+            scope: profile, email
+
+security:
+  jwt:
+    secret-key: nice jwt secret
+    expiration-time: 100000
