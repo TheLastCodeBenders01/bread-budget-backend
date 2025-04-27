@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: bread-budget-backend
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5433/budget-tracker
+
+#  flyway:
+#    user: ${DB_USER}
+#    password: ${DB_PASSWORD}
+#    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
