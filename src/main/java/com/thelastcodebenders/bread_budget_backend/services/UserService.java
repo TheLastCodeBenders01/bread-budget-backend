@@ -2,8 +2,11 @@ package com.thelastcodebenders.bread_budget_backend.services;
 
 import com.thelastcodebenders.bread_budget_backend.exceptions.UserNotFoundException;
 import com.thelastcodebenders.bread_budget_backend.models.User;
+import com.thelastcodebenders.bread_budget_backend.models.dto.AppResponse;
 import com.thelastcodebenders.bread_budget_backend.repositories.UserRepository;
+import com.thelastcodebenders.bread_budget_backend.utils.UserUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -24,5 +27,21 @@ public class UserService {
 
     public User findUserByEmail(String email) throws UserNotFoundException {
         return userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
+    }
+
+    public AppResponse addCustomerId(String customerId) {
+        User user = UserUtil.getLoggedInUser();
+
+        user.setCustomerId(customerId);
+        saveUser(user);
+
+        return AppResponse.builder()
+                .message("Bank Id successfully saved")
+                .status(HttpStatus.OK)
+                .build();
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 }

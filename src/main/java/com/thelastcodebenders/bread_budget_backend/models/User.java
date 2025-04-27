@@ -29,6 +29,7 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    private String customerId;
 
     @Builder.Default private boolean isPrinter = false;
     @Builder.Default private boolean accountNonExpired = true;

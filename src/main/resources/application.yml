@@ -26,4 +26,4 @@ spring:
 security:
   jwt:
     secret-key: nice jwt secret
-    expiration-time: 100000
+    expiration-time: 216000000
