@@ -1,5 +1,6 @@
 package com.thelastcodebenders.bread_budget_backend.models;
 
+import com.thelastcodebenders.bread_budget_backend.models.dto.UserResponse;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -29,7 +30,6 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
-    private String customerId;
 
     @Builder.Default private boolean isPrinter = false;
     @Builder.Default private boolean accountNonExpired = true;
@@ -46,5 +46,14 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return email;
+    }
+
+    public UserResponse toDto() {
+        return UserResponse.builder()
+                .userId(userId)
+                .firstName(firstName)
+                .lastName(lastName)
+                .email(email)
+                .build();
     }
 }

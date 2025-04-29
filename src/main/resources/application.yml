@@ -4,26 +4,29 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
-    username: postgres
-    password: password
-    url: jdbc:postgresql://localhost:5433/budget-tracker
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
 
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: a nice client id
-            client-secret: a nice client secret
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${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}
             scope: profile, email
-
 security:
   jwt:
-    secret-key: nice jwt secret
-    expiration-time: 216000000
+      secret-key: ${JWT_SECRET}
+      expiration-time: ${JWT_EXPIRY}
+groq:
+  api-secret: ${GROQ_API_SECRET}
+  api-url: ${GROQ_API_URL}
+

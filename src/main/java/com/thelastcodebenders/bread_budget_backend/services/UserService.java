@@ -4,9 +4,7 @@ import com.thelastcodebenders.bread_budget_backend.exceptions.UserNotFoundExcept
 import com.thelastcodebenders.bread_budget_backend.models.User;
 import com.thelastcodebenders.bread_budget_backend.models.dto.AppResponse;
 import com.thelastcodebenders.bread_budget_backend.repositories.UserRepository;
-import com.thelastcodebenders.bread_budget_backend.utils.UserUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -30,15 +28,16 @@ public class UserService {
     }
 
     public AppResponse addCustomerId(String customerId) {
-        User user = UserUtil.getLoggedInUser();
-
-        user.setCustomerId(customerId);
-        saveUser(user);
-
-        return AppResponse.builder()
-                .message("Bank Id successfully saved")
-                .status(HttpStatus.OK)
-                .build();
+//        User user = UserUtil.getLoggedInUser();
+//
+//        user.setCustomerId(customerId);
+//        saveUser(user);
+//
+//        return AppResponse.builder()
+//                .message("Bank Id successfully saved")
+//                .status(HttpStatus.OK)
+//                .build();
+        return null;
     }
 
     public void saveUser(User user) {
