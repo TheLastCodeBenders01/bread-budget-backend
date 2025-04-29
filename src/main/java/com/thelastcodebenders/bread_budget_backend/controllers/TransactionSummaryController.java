@@ -1,6 +1,7 @@
 package com.thelastcodebenders.bread_budget_backend.controllers;
 
 import com.thelastcodebenders.bread_budget_backend.models.dto.SummaryResponse;
+import com.thelastcodebenders.bread_budget_backend.models.dto.TransactionSummaryRequest;
 import com.thelastcodebenders.bread_budget_backend.services.GroqApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class TransactionSummaryController {
 
     @PostMapping
 //    public SummaryResponse getLastWeekSummary(@RequestParam("file")MultipartFile file) {
-    public SummaryResponse getLastWeekSummary(@RequestBody String fileContents) {
-        return groqApiService.generateSummary(fileContents);
+    public SummaryResponse getLastWeekSummary(@RequestBody TransactionSummaryRequest transactionSummaryRequest) {
+        return groqApiService.generateSummary(transactionSummaryRequest.getFileContent());
     }
 }
