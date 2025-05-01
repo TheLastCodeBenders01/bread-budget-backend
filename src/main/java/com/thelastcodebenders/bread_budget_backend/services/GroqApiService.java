@@ -38,6 +38,8 @@ public class GroqApiService {
 
                 List<String> response = groqApiAdapter.promptGroqForTransactionSummary(fileContents);
 
+                inputStream.close();
+
                 return SummaryResponse.builder()
                         .data(Map.of("summary", response.get(0),
                                 "advice", response.get(1),

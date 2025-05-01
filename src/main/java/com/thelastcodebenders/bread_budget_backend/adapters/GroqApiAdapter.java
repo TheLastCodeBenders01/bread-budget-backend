@@ -41,7 +41,7 @@ public class GroqApiAdapter {
                 " I want you to give some data in this format also after the advice section inside a <data> tag" +
                 " in the form {`transactionCategory1`:`amount1`} without any backslashes(\\)" +
                 " please follow my instructions for the data form strictly" +
-                "for debits add negatives before the amount for positive values do not bother to add + sign just leave it" +
+                "for debits prefix the transactionCategory with - for positive values prefix it with + sign" +
                 "Here are the contents of the file:\n";
 
         HttpHeaders headers = new HttpHeaders();
@@ -49,7 +49,8 @@ public class GroqApiAdapter {
         headers.setBearerAuth(groqApiKey);
 
         Map<String, Object> body = new HashMap<>();
-        body.put("model", "gemma2-9b-it");
+        body.put("model", "meta-llama/llama-4-scout-17b-16e-instruct");
+//        body.put("model", "llama-3.3-70b-versatile");
         body.put("messages", new Object[]{
                 Map.of("role", "user","content", preCommand + prompt)
         });
